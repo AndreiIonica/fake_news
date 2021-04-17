@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "User",
+  "description": "The user object schema.No required properties as we dont create users here.",
+  "default": {},
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer",
+      "title": "The database id"
+    },
+    "link": {
+      "$id": "#/properties/link",
+      "type": "string",
+      "title": "Link of the article."
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The title of the post."
+    },
+    "correction": {
+      "$id": "#/properties/correction",
+      "type": "string",
+      "title": "The correction string of the post."
+    },
+    "type_id": {
+      "$id": "#/properties/type_id",
+      "type": "number",
+      "title": "The type_id "
+    },
+    "user_id": {
+      "$id": "#/properties/user_id",
+      "type": "number",
+      "title": "The user_id "
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The date the trashcan_type was created"
+    },
+    "update_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The date the trashcan_type was last updated"
+    },
+    "deleted_at": {
+      "$id": "#/properties/deleted_at",
+      "type": "string",
+      "title": "The date the trashcan_type was deleted"
+    }
+  }
+}
