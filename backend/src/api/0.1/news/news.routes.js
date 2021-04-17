@@ -1,4 +1,6 @@
 const express = require('express');
+const { getLinkPreview } = require('link-preview-js');
+
 const News = require('./news.model');
 
 const router = express.Router();
@@ -18,9 +20,17 @@ router.get('/', async (req, res, next) => {
 router.post('/', isLoggedIn, async (req, res, next) => {
   try {
     req.body.user_id = req.auth_data.id;
-    const news = await News.query().insert(req.body);
+    let news = req.body;
+    const preview = await getLinkPreview(news.link);
 
-    res.json(news);
+    news.title = preview.title;
+    news.description = preview.title;
+    news.image = preview.images[0];
+    console.log(news);
+
+    const inserted = await News.query().insert(news);
+
+    res.json(inserted);
   } catch (err) {
     next(err);
   }

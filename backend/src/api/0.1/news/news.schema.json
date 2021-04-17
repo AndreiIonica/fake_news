@@ -27,6 +27,14 @@
       "type": "string",
       "title": "The correction string of the post."
     },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string"
+    },
+    "image": {
+      "$id": "#/properties/image",
+      "type": "string"
+    },
     "type_id": {
       "$id": "#/properties/type_id",
       "type": "number",

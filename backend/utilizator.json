@@ -1,10 +1,10 @@
 {
   "id": 1,
   "username": "Admin",
-  "password": "52307b6cdefbb4087743b57b8ee7bd",
+  "password": "e6898c31747b02edd72938bb5c2ffc",
   "role": "admin",
-  "created_at": "2021-04-17T12:39:11.856Z",
-  "updated_at": "2021-04-17T12:39:11.856Z",
+  "created_at": "2021-04-17T17:04:10.184Z",
+  "updated_at": "2021-04-17T17:04:10.184Z",
   "deleted_at": null,
-  "hashedPass": "$2b$12$vxvw4yem2ykqYQDvo9/Q6OdTVaVUowBEUiLyJn.sahiR3JzIwp16y"
+  "hashedPass": "$2b$12$xsQZ22B.hVFhxYNVS6GbeuF4gR38Ia7jLSEcZhbYqgtBhfqypUp3q"
 }

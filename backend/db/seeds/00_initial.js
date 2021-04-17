@@ -3,12 +3,14 @@
 const Knex = require('knex');
 const crypto = require('crypto'); // random bytes
 const bcrypt = require('bcrypt'); // hashing algo
+const { getLinkPreview } = require('link-preview-js');
 const fs = require('fs');
 
 const tableNames = require('../../src/constants/tableNames.json');
-const { table } = require('../../src/db');
+const data = require('../sources/news.json');
 
 const userSeed = async (knex) => {
+  await knex(tableNames.user).del();
   const password = process.env.ADMINPASSWD || crypto.randomBytes(15).toString('hex');
 
   const user = {
@@ -23,7 +25,10 @@ const userSeed = async (knex) => {
 
   fs.writeFileSync('./utilizator.json', JSON.stringify(createdUser, null, 2));
 };
+
 const typeSeed = async (knex) => {
+  await knex(tableNames.type).del();
+
   const types = [
     { name: 'Politica' },
     { name: 'Sport' },
@@ -32,6 +37,23 @@ const typeSeed = async (knex) => {
     { name: 'Actualitate' },
   ];
   await knex(tableNames.type).insert(types);
+};
+
+const fakeSeed = async (knex) => {
+  await knex(tableNames.news).del();
+
+  const insertData = [];
+
+  for (let d of data) {
+    const preview = await getLinkPreview(d.link);
+
+    d.title = preview.title;
+    d.description = preview.title;
+    d.image = preview.images[0];
+
+    insertData.push(d);
+  }
+  await knex(tableNames.news).insert(insertData);
 };
 
 /**
@@ -46,4 +68,7 @@ exports.seed = async (knex) => {
 
   // TYPE SEED
   await typeSeed(knex);
+
+  // FAKE SEED
+  await fakeSeed(knex);
 };

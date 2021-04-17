@@ -40,8 +40,10 @@ exports.up = async (knex) => {
     table.increments().notNullable();
 
     table.string('link', 2000).notNullable();
-    table.string('title', 50).notNullable();
+    table.string('title', 1000).notNullable();
     table.string('correction', 1000).notNullable();
+    table.string('description', 1000).notNullable();
+    table.string('image', 1000).notNullable();
 
     reference(table, 'type_id', tableNames.type);
     reference(table, 'user_id', tableNames.user);
