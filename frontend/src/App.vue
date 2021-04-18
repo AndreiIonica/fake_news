@@ -18,12 +18,14 @@
         :link="item.link"
       />
     </div>
+    <bottom-bar />
   </div>
 </template>
 
 <script>
 import TopBar from './components/TopBar.vue';
 import News from './components/News.vue';
+import BottomBar from './components/BottomBar.vue';
 import { toateStirile } from './lib/DataManager';
 
 export default {
@@ -45,6 +47,7 @@ export default {
   components: {
     TopBar,
     News,
+    BottomBar,
   },
   async mounted() {
     this.newsData = await toateStirile();
