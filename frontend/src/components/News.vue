@@ -1,11 +1,16 @@
 <template>
-  <div id="news">
-    <div>
-      <img :src="imgSrc" alt="news_preview" />
-    </div>
-    <div id="text">
-      <h5>{{ title }}</h5>
-      <p>{{ description }}</p>
+  <div id="container">
+    <div id="news" :class="correction.length == 0 ? '' : 'wrong'">
+      <div>
+        <img :src="imgSrc" alt="news_preview" />
+      </div>
+      <div id="text">
+        <a :href="link">{{ title }}</a>
+        <p>{{ description }}</p>
+      </div>
+      <h4>
+        {{ correction }}
+      </h4>
     </div>
   </div>
 </template>
@@ -16,29 +21,29 @@ export default {
     imgSrc: String,
     title: String,
     description: String,
-  },
-  mounted() {
-    console.log(this.imgSrc);
+    link: String,
+    correction: String,
   },
 };
 </script>
 
 <style scoped>
-/* img {
-  height: 200px;
-  padding: 0;
-}
-
-#news {
-  width: 400px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-} */
-
 #news {
   display: grid;
   grid-template-columns: auto auto;
   width: 500px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#container {
+  padding-bottom: 100px;
+  width: 100%;
+}
+
+.wrong {
+  background: #ffcfda;
 }
 
 #text {
@@ -46,11 +51,31 @@ export default {
   margin-top: 0;
   padding-left: 5px;
 }
+
+h4 {
+  color: var(--blue);
+  grid-column: 1 / -1;
+}
+
 p {
   font-size: 0.7rem;
 }
 
+a {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: black;
+  font-style: normal;
+}
+
 img {
-  height: 200px;
+  /* height: 150px; */
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  #news {
+    width: 300px;
+  }
 }
 </style>

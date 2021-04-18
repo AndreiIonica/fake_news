@@ -16,6 +16,9 @@
     <a>
       ACTUALITATE
     </a>
+    <a id="info" href="info.html">
+      INFO
+    </a>
   </div>
 </template>
 
@@ -37,9 +40,19 @@ a {
   font-family: 'Stoke', serif;
   margin: 1%;
   font-size: 1.25rem;
+  color: white;
 }
 
 img {
   height: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  a {
+    display: none;
+  }
+  #info {
+    display: block;
+  }
 }
 </style>

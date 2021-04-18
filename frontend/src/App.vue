@@ -3,34 +3,54 @@
     <top-bar />
     <div id="phrase">
       Rely On Us
+      <div id="search-container">
+        <input type="text" placeholder="Search.." name="search" v-model="searchString" />
+      </div>
     </div>
-    <div id="news-container"></div>
+    <div id="news-container">
+      <news
+        v-for="(item, index) in news"
+        :key="index"
+        :imgSrc="item.image"
+        :title="item.title"
+        :description="item.description"
+        :correction="item.correction"
+        :link="item.link"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
 import TopBar from './components/TopBar.vue';
 import News from './components/News.vue';
 import { toateStirile } from './lib/DataManager';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      newsData: [],
+      searchString: '',
+    };
+  },
+  computed: {
+    news() {
+      if (this.searchString === '') return this.newsData;
+      const search = this.searchString.toLowerCase();
+      // eslint-disable-next-line arrow-parens
+      return this.newsData.filter(el => el.title.toLowerCase().includes(search));
+    },
+  },
   components: {
     TopBar,
+    News,
   },
   async mounted() {
-    const newsData = await toateStirile();
-    console.log(newsData);
-    const N = Vue.extend(News);
-    for (let i = 0; i < 2; i += 1) {
-      new N({
-        propsData: {
-          imgSrc: 'https://www.timesnewroman.ro/wp-content/uploads/2021/04/rusiinucraina.jpg',
-          title: 'Un rus a dat mingea peste gard până în Ucraina. 40.000 de soldaţi, trimişi după ea',
-          description: 'Un rus a dat mingea peste gard până în Ucraina. 40.000 de soldaţi, trimişi după ea',
-        },
-      }).$mount('#news-container');
+    this.newsData = await toateStirile();
+    for (let i = 0; i < this.newsData.length; i += 1) {
+      this.newsData[i].title = this.newsData[i].title.slice(0, 40);
+      this.newsData[i].show = true;
     }
   },
 };
@@ -41,9 +61,22 @@ export default {
 :root {
   --blue: #008088;
 }
+#search-container {
+  float: right;
+}
 
 body {
   margin: 0;
+}
+#news-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+@media screen and (max-width: 600px) {
+  #news-container {
+    display: block;
+  }
 }
 
 #phrase {
