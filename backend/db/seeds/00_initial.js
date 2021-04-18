@@ -49,8 +49,7 @@ const fakeSeed = async (knex) => {
 
     d.title = preview.title;
     d.description = preview.title;
-    d.image = preview.images[0];
-
+    if (d.image === undefined) d.image = preview.images[0];
     insertData.push(d);
   }
   await knex(tableNames.news).insert(insertData);

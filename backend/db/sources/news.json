@@ -2,8 +2,9 @@
   {
     "link": "https://m.monitorulsv.ro/Local/2020-03-31/Nas-de-tren-internat-la-Boli-Infectioase-cu-suspiciune-de-coronavirus",
     "title": "Nas de tren internat la Boli Infectioase cu suspiciune de coronavirus",
-    "correction": "https://www.cfrcalatori.ro/fake-news/stire-falsa/",
+    "correction": "FALS: https://www.cfrcalatori.ro/fake-news/stire-falsa/",
     "type_id": 5,
+    "image": "https://www.observatorulph.ro/wp-content/uploads/2014/01/riscuri-tren-nas.jpg",
     "user_id": 1
   },
   {
@@ -23,7 +24,7 @@
   {
     "link": "https://www.timesnewroman.ro/life-death/un-rus-a-dat-mingea-peste-gard-pana-in-ucraina-40-000-de-soldati-trimisi-dupa-ea/",
     "title": "Un rus a dat mingea peste gard pana in Ucraina.40000 de soldati trimisi dupa ea",
-    "correction": "",
+    "correction": "FALS: aceasta stire este satirica",
     "type_id": 4,
     "user_id": 1
   },
@@ -31,6 +32,7 @@
     "link": "http://argumentul.ro/single.php?id=367",
     "title": "A murit Ion Iliescu",
     "correction": "Ion Iliescu nu a murit",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Ion_Iliescu_(2004).jpg",
     "type_id": 1,
     "user_id": 1
   },
